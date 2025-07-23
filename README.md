@@ -35,7 +35,7 @@ To run this app, you need:
 
 ### Code Explanation
 
-- **CommanConstants**: This class contains constant values for the application, such as the application name, frame size, and text field size.
+- **CommonConstants**: This class contains constant values for the application, such as the application name, frame size, and text field size.
   
 - **LoginGUI**: The `LoginGUI` class is responsible for creating the login window using Swing components:
   - A `JLabel` for the username and password fields.
