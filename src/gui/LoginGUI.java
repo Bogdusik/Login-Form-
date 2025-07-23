@@ -1,6 +1,6 @@
 package gui;
 
-import constants.CommanConstants;
+import constants.CommonConstants;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,10 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginGUI extends JFrame {
+    private static final long serialVersionUID = 1L;
     public LoginGUI(){
-        super(CommanConstants.APP_NAME);
+        super(CommonConstants.APP_NAME);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(CommanConstants.FRAME_SIZE[0], CommanConstants.FRAME_SIZE[1]);
+        setSize(CommonConstants.FRAME_SIZE[0], CommonConstants.FRAME_SIZE[1]);
         setLocationRelativeTo(null);
 
         addGUIComponents();
@@ -26,13 +27,13 @@ public class LoginGUI extends JFrame {
         JLabel usernameLabel = new JLabel("Username: ");
         usernameLabel.setFont(new Font("Dialog", Font.PLAIN, 10));
 
-        JTextField usernameField = new JTextField(CommanConstants.TEXTFIELD_SIZE);
+        JTextField usernameField = new JTextField(CommonConstants.TEXTFIELD_SIZE);
         usernameField.setFont(new Font("Dialog", Font.PLAIN, 10));
 
-        springLayout.putConstraint(SpringLayout.WEST, usernameLabel, 35, springLayout.WEST, loginPanel);
-        springLayout.putConstraint(SpringLayout.NORTH, usernameLabel, 85, springLayout.NORTH, loginPanel);
-        springLayout.putConstraint(SpringLayout.WEST, usernameField, 135, springLayout.WEST, loginPanel);
-        springLayout.putConstraint(SpringLayout.NORTH, usernameField, 85, springLayout.NORTH, loginPanel);
+        springLayout.putConstraint(SpringLayout.WEST, usernameLabel, 35, SpringLayout.WEST, loginPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, usernameLabel, 85, SpringLayout.NORTH, loginPanel);
+        springLayout.putConstraint(SpringLayout.WEST, usernameField, 135, SpringLayout.WEST, loginPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, usernameField, 85, SpringLayout.NORTH, loginPanel);
 
         loginPanel.add(usernameLabel);
         loginPanel.add(usernameField);
@@ -41,7 +42,7 @@ public class LoginGUI extends JFrame {
         JLabel passwordLabel = new JLabel("Password: ");
         passwordLabel.setFont(new Font("Dialog", Font.PLAIN, 10));
 
-        JPasswordField passwordField = new JPasswordField(CommanConstants.TEXTFIELD_SIZE);
+        JPasswordField passwordField = new JPasswordField(CommonConstants.TEXTFIELD_SIZE);
         passwordField.setFont(new Font("Dialog", Font.PLAIN, 10));
 
         springLayout.putConstraint(SpringLayout.WEST, passwordLabel, 35, SpringLayout.WEST, loginPanel);
@@ -59,17 +60,14 @@ public class LoginGUI extends JFrame {
 
         springLayout.putConstraint(SpringLayout.WEST, loginButton, 150, SpringLayout.WEST, loginPanel);
         springLayout.putConstraint(SpringLayout.NORTH, loginButton, 250, SpringLayout.NORTH, loginPanel);
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String username = usernameField.getText();
-                String password = passwordField.getText();
+        loginButton.addActionListener(e -> {
+            String username = usernameField.getText();
+            String password = String.valueOf(passwordField.getPassword());
 
-                if(username.equals("username") && password.equals("password")){
-                    System.out.println("LOGIN SUCCESSFUL!");
-                }else{
-                    System.out.println("LOGIN FAILED...");
-                }
+            if (username.equals("username") && password.equals("password")) {
+                System.out.println("LOGIN SUCCESSFUL!");
+            } else {
+                System.out.println("LOGIN FAILED...");
             }
         });
 
@@ -80,3 +78,4 @@ public class LoginGUI extends JFrame {
         this.getContentPane().add(loginPanel);
     }
 }
+
